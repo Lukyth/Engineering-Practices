@@ -1,6 +1,23 @@
 <?php
 require "captcha.php";
+require "randomizer.php";
 class CaptchaTest extends PHPUnit_Framework_TestCase {
+    function testController () {
+        $stubRandomizer = $this->getMock('Randomizer');
+        $stubRandomizer->expects($this->any())
+            ->method('pattern')
+            ->will($this->returnValue(1));
+        $stubRandomizer->expects($this->any())
+            ->method('operator')
+            ->will($this->returnValue(1));
+        $stubRandomizer->expects($this->any())
+            ->method('operand')
+            ->will($this->returnValue(1));
+        $this->assertEquals("1", $stubRandomizer->pattern());
+        $this->assertEquals("1", $stubRandomizer->operator());
+        $this->assertEquals("1", $stubRandomizer->operand());
+    }
+
     function testCaptcha1111ShoudBeOnePlus1 () {
         $captcha = new Captcha (1, 1, 1, 1);
         $this->assertEquals("One + 1", $captcha->toString());
