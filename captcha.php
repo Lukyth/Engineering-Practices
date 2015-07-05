@@ -12,11 +12,6 @@ function captcha($pattern, $leftOperand, $operator, $rightOperand) {
         9 => "Nine",
     );
 
-    $f = array(
-        1 => "+",
-        2 => "-",
-        3 => "*",
-    );
     if(($pattern < 1 or $pattern > 2) or ($operator < 1 or $operator > 3)){
         return "You shouldn't do this to me :(" . "\n";
     }
