@@ -1,5 +1,5 @@
 <?php
-function captcha($a, $b, $c, $d) {
+function captcha($pattern, $leftOperand, $operator, $rightOperand) {
     $e = array(
         1 => "One",
         2 => "Two",
@@ -17,41 +17,41 @@ function captcha($a, $b, $c, $d) {
         2 => "-",
         3 => "*",
     );
-    if(($a < 1 or $a > 2) or ($c < 1 or $c > 3)){
+    if(($pattern < 1 or $pattern > 2) or ($operator < 1 or $operator > 3)){
         return "You shouldn't do this to me :(" . "\n";
     }
 
-        if($a==1)
+        if($pattern==1)
         {
-            if($c == 1){
-                $c = "+";
+            if($operator == 1){
+                $operator = "+";
             }
 
-            if($c == 3){
-                $c = "*";
+            if($operator == 3){
+                $operator = "*";
             }
 
-            if($c == 2)
+            if($operator == 2)
             {
-                $c = "-";
+                $operator = "-";
             }
 
-            $b = $e[$b];
+            $leftOperand = $e[$leftOperand];
         }
-        else if($a==2){
-            if($c == 1){
-                $c = "+";
+        else if($pattern==2){
+            if($operator == 1){
+                $operator = "+";
             }
 
-            if($c == 3){
-                $c = "*";
+            if($operator == 3){
+                $operator = "*";
             }
 
-            if($c == 2)
+            if($operator == 2)
             {
-                $c = "-";
+                $operator = "-";
             }
-            $d = $e[$d];
+            $rightOperand = $e[$rightOperand];
         }
-        return $b . " " . $c . " " . $d ;
+        return $leftOperand . " " . $operator . " " . $rightOperand ;
 }
