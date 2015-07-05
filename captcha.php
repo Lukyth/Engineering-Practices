@@ -1,4 +1,20 @@
 <?php
+function createOperator($operator) {
+    if($operator == 1){
+        $operator = "+";
+    }
+
+    if($operator == 3){
+        $operator = "*";
+    }
+
+    if($operator == 2)
+    {
+        $operator = "-";
+    }
+    return $operator;
+}
+
 function captcha($pattern, $leftOperand, $operator, $rightOperand) {
     $numbers = array(
         1 => "One",
@@ -18,34 +34,11 @@ function captcha($pattern, $leftOperand, $operator, $rightOperand) {
 
         if($pattern==1)
         {
-            if($operator == 1){
-                $operator = "+";
-            }
-
-            if($operator == 3){
-                $operator = "*";
-            }
-
-            if($operator == 2)
-            {
-                $operator = "-";
-            }
-
+            $operator = createOperator($operator);
             $leftOperand = $numbers[$leftOperand];
         }
         else if($pattern==2){
-            if($operator == 1){
-                $operator = "+";
-            }
-
-            if($operator == 3){
-                $operator = "*";
-            }
-
-            if($operator == 2)
-            {
-                $operator = "-";
-            }
+            $operator = createOperator($operator);
             $rightOperand = $numbers[$rightOperand];
         }
         return $leftOperand . " " . $operator . " " . $rightOperand ;
