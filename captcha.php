@@ -1,6 +1,6 @@
 <?php
 function captcha($pattern, $leftOperand, $operator, $rightOperand) {
-    $e = array(
+    $numbers = array(
         1 => "One",
         2 => "Two",
         3 => "Three",
@@ -36,7 +36,7 @@ function captcha($pattern, $leftOperand, $operator, $rightOperand) {
                 $operator = "-";
             }
 
-            $leftOperand = $e[$leftOperand];
+            $leftOperand = $numbers[$leftOperand];
         }
         else if($pattern==2){
             if($operator == 1){
@@ -51,7 +51,7 @@ function captcha($pattern, $leftOperand, $operator, $rightOperand) {
             {
                 $operator = "-";
             }
-            $rightOperand = $e[$rightOperand];
+            $rightOperand = $numbers[$rightOperand];
         }
         return $leftOperand . " " . $operator . " " . $rightOperand ;
 }
