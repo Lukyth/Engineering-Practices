@@ -1,5 +1,6 @@
 <?php
 require_once 'captcha.php';
+
 class CaptchaController {
     private $randomizer;
     function __construct ($randomizer) {

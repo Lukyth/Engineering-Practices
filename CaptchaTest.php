@@ -19,31 +19,30 @@ class CaptchaTest extends PHPUnit_Framework_TestCase {
         $captcha = $controller->buildCaptcha();
         $this->assertEquals("One + 1", $captcha->toString());
     }
-
-    function testCaptcha1111ShoudBeOnePlus1 () {
+    function testCaptcha1111ShouldBeOnePlus1 () {
         $captcha = new Captcha (1, 1, 1, 1);
         $this->assertEquals("One + 1", $captcha->toString());
     }
-    function testCaptcha1121ShoudBeOneMinus1 () {
+    function testCaptcha1121ShouldBeOneMinus1 () {
         $captcha = new Captcha (1, 1, 2, 1);
         $this->assertEquals("One - 1", $captcha->toString());
     }
-    function testWhenInputIs1111ResultShoudBeOnePlus1() {
+    function testWhenInputIs1111ResultShouldBeOnePlus1() {
         $this->assertEquals("One + 1", captcha(1, 1, 1, 1));
     }
-    function testWhenInputIs1121ResultShoudBeOneMinus1 () {
+    function testWhenInputIs1121ResultShouldBeOneMinus1 () {
         $this->assertEquals("One - 1", captcha(1, 1, 2, 1));
     }
-    function testWhenInputIs1931ResultShoudBeNineMultiply1 () {
+    function testWhenInputIs1931ResultShouldBeNineMultiply1 () {
         $this->assertEquals("Nine * 1", captcha(1, 9, 3, 1));
     }
-    function testWhenInputIs2111ResultShoudBe1PlusOne () {
+    function testWhenInputIs2111ResultShouldBe1PlusOne () {
         $this->assertEquals("1 + One", captcha(2, 1, 1, 1));
     }
-    function testWhenInputIs2121ResultShoudBe1MinusOne () {
+    function testWhenInputIs2121ResultShouldBe1MinusOne () {
         $this->assertEquals("1 - One", captcha(2, 1, 2, 1));
     }
-    function testWhenInputIs2131ResultShoudBe1MultiplyOne () {
+    function testWhenInputIs2131ResultShouldBe1MultiplyOne () {
         $this->assertEquals("1 * One", captcha(2, 1, 3, 1));
     }
 }
