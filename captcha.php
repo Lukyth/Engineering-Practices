@@ -1,4 +1,26 @@
 <?php
+class Captcha {
+    private $pattern, $leftOperand, $operator, $rightOperand;
+    function __construct ($pattern, $leftOperand, $operator, $rightOperand) {
+        $this->pattern = $pattern;
+        $this->leftOperand = $leftOperand;
+        $this->operator = $operator;
+        $this->rightOperand = $rightOperand;
+    }
+    function toString() {
+        if($this->pattern == 1) {
+            $leftOperand = createStringOperand($this->leftOperand);
+            $operator = createOperator($this->operator);
+            $rightOperand = $this->rightOperand;
+        }
+        else {
+            $leftOperand = $this->leftOperand;
+            $operator = createOperator($this->operator);
+            $rightOperand = createStringOperand($this->rightOperand);
+        }
+        return $leftOperand . " " . $operator . " " . $rightOperand ;
+    }
+}
 function createOperator ($operator) {
     if($operator == 1){
         $operator = "+";
@@ -36,16 +58,6 @@ function captcha($pattern, $leftOperand, $operator, $rightOperand) {
     if(($pattern < 1 or $pattern > 2) or ($operator < 1 or $operator > 3)){
         return "You shouldn't do this to me :(" . "\n";
     }
-        if(leftIsStringRightIsInteger($pattern))
-        {
-            $leftOperand = createStringOperand($leftOperand);
-            $operator = createOperator($operator);
-            $rightOperand = $rightOperand;
-        }
-        else if(leftIsIntegerRightIsString($pattern)){
-            $leftOperand = $leftOperand;
-            $operator = createOperator($operator);
-            $rightOperand = createStringOperand($rightOperand);
-        }
-        return $leftOperand . " " . $operator . " " . $rightOperand ;
+    $captcha = new Captcha ($pattern, $leftOperand, $operator, $rightOperand);
+    return $captcha->toString();
 }

@@ -1,6 +1,14 @@
 <?php
 require "captcha.php";
 class CaptchaTest extends PHPUnit_Framework_TestCase {
+    function testCaptcha1111ShoudBeOnePlus1 () {
+        $captcha = new Captcha (1, 1, 1, 1);
+        $this->assertEquals("One + 1", $captcha->toString());
+    }
+    function testCaptcha1121ShoudBeOneMinus1 () {
+        $captcha = new Captcha (1, 1, 2, 1);
+        $this->assertEquals("One - 1", $captcha->toString());
+    }
     function testWhenInputIs1111ResultShoudBeOnePlus1() {
         $this->assertEquals("One + 1", captcha(1, 1, 1, 1));
     }
